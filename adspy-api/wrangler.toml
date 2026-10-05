@@ -1,0 +1,10 @@
+name = "adspy-api"
+main = "src/index.ts"
+compatibility_date = "2024-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[node_compat]]
+enabled = true
+
+[vars]
+ENVIRONMENT = "production"

@@ -17,7 +17,10 @@ app.get('/', async (c) => {
         MAX(score) as max_score,
         ARRAY_AGG(DISTINCT country) as countries,
         MIN(price) as price_min,
-        MAX(price) as price_max
+        MAX(price) as price_max,
+        (SELECT a2.image_url FROM ads a2 
+         WHERE a2.advertiser = ads.advertiser AND a2.image_url IS NOT NULL 
+         LIMIT 1) as sample_image
       FROM ads
       WHERE advertiser IS NOT NULL AND advertiser != ''
       GROUP BY advertiser

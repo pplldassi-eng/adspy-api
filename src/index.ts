@@ -9,7 +9,8 @@ const app = new Hono();
 
 app.use('*', cors({
   origin: '*',
-  allowMethods: ['GET', 'OPTIONS'],
+  allowMethods: ['GET', 'POST', 'OPTIONS'],
+  allowHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.get('/', (c) => c.json({

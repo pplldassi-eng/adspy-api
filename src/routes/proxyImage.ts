@@ -11,9 +11,10 @@ app.get('/', async (c) => {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
         'Referer': 'https://www.facebook.com/',
         'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8',
+        'Cookie': 'datr=fake-cookie-for-hotlink-bypass',
       },
     });
 

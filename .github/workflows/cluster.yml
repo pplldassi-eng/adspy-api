@@ -1,0 +1,30 @@
+name: Cluster Products
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  cluster:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Installer les dependances
+        run: npm install --no-audit --no-fund
+
+      - name: Lancer le clustering
+        run: npx tsx scripts/cluster-products.ts
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          WORKER_AI_URL: ${{ secrets.WORKER_AI_URL }}
+          WORKER_AI_KEY: ${{ secrets.WORKER_AI_KEY }}

@@ -55,7 +55,12 @@ Ne mets AUCUN commentaire. Uniquement le JSON.`;
     }
 
     const data: any = await res.json();
-    let content = (data.response || '').trim();
+    console.log('DEBUG raw response:', JSON.stringify(data).slice(0, 200));
+    let raw = data.response;
+    if (typeof raw === 'object' && raw !== null) {
+      raw = raw.response || raw.text || raw.content || JSON.stringify(raw);
+    }
+    let content = String(raw || '').trim();
     content = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
     
     const match = content.match(/\{[\s\S]*\}/);

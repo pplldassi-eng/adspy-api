@@ -19,9 +19,9 @@ app.get('/', async (c) => {
         MIN(price) as price_min,
         MAX(price) as price_max,
         (SELECT a2.image_url FROM ads a2 
-         WHERE a2.advertiser = ads.advertiser AND a2.image_url IS NOT NULL 
+         WHERE a2.advertiser = a.advertiser AND a2.image_url IS NOT NULL 
          LIMIT 1) as sample_image
-      FROM ads
+      FROM ads a
       WHERE advertiser IS NOT NULL AND advertiser != ''
       GROUP BY advertiser
       ORDER BY COUNT(*) DESC, MAX(score) DESC

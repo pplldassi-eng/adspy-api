@@ -5,6 +5,7 @@ import blueOcean from './routes/blueOcean';
 import shops from './routes/shops';
 import stats from './routes/stats';
 import proxyImage from './routes/proxyImage';
+import verify from './routes/verify';
 
 const app = new Hono();
 
@@ -31,5 +32,6 @@ app.route('/api/blue-ocean', blueOcean);
 app.route('/api/shops', shops);
 app.route('/api/stats', stats);
 app.route('/api/proxy-image', proxyImage);
+app.route('/api/verify', verify);
 
 export default app;
